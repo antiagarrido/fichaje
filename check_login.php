@@ -15,8 +15,6 @@ if(isset($_SESSION['usuario'])){
 }
 
 
-
-
 function error_sesion(){
     echo "<script>
             alert('Debes iniciar sesión');

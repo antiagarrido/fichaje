@@ -20,4 +20,4 @@ if($conexion->query($consulta)){
     echo "<script>alert('Error al activar el fichaje');
     window.location.href='index.php' </script>";
 }
-?>
+?> 

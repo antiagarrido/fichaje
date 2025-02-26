@@ -6,14 +6,32 @@
     <title>Fichajes</title>
 </head>
 <body>
-    
+<h1>Fichajes</h1>  
+<table>
+
+
+<tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Tipo</th>
+        <th>Activo</th>
+    </tr>
+    </thead>
+
+    <thead>
+       
+    <tbody> 
 
 <?php
+
+include 'conexion.php';
 
 $id = $_GET['id'];
 
 
-$sql = "SELECT * FROM fichajes INNER JOIN usuarios WHERE id_fic = $id";
+$sql = "SELECT * FROM fichajes f INNER JOIN usuarios u  ON f.id_usu = u.id_usu  WHERE id_usu = $id";
 $resultado = $conexion->query($sql);
 
 foreach($resultado as $registro){
@@ -25,8 +43,23 @@ foreach($resultado as $registro){
     $tipo= $registro['tipo_fic'];
     $activo = $registro['activo_fic'];
 
-
 ?>
+
+
+
+
+
+
+
+    <tr>
+        <td><?php echo $nombre?> </td>
+        <td><?php echo $apellidos?> </td>
+        <td><?php echo $fecha?> </td>
+        <td><?php echo $hora?> </td>
+        <td><?php echo $tipo?> </td>
+        <td><?php echo $activo?> </td>
+    </tr>
+   
 
 
 <?php
@@ -35,6 +68,8 @@ foreach($resultado as $registro){
 
 
 ?>
+
+</tbody>
 
 </body>
 </html>

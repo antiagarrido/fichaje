@@ -56,7 +56,7 @@ if(!$admin){
         <td><?php echo $dni?> </td>
         <td>
             <a href="editar_usu.php?id=<?php echo $id?>">Editar</a>
-            <a href="ver_fichaje.php?id=<?php echo $id?>">Editar</a>
+            <a href="ver_fichaje.php?id=<?php echo $id?>">Ver fichajes</a>
 <?php
 
 if($tipo != 2){

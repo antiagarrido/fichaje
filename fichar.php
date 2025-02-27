@@ -11,6 +11,8 @@
 include("conexion.php");
 
 $tipo_ult = "N"; 
+$activo_fic = "";
+$fecha_fic = "";
 
 if ($_POST) {
     $dni = $_POST['dni'];
@@ -24,22 +26,36 @@ if ($_POST) {
         }
       
 
-        $sql_fic = "SELECT tipo_fic FROM fichajes WHERE id_usu='$id_usu' AND activo_fic=1 ORDER BY fecha_fic DESC, hora_fic DESC LIMIT 1";
+        $sql_fic = "SELECT tipo_fic, activo_fic, fecha_fic FROM fichajes WHERE id_usu='$id_usu' ORDER BY id_fic DESC LIMIT 1";
         $resultado_fic = $conexion->query($sql_fic);
 
         if ($resultado_fic->num_rows == 1) {
            foreach ($resultado_fic as $registro_fic){
 
             $tipo_ult = $registro_fic['tipo_fic'];
+            $activo_fic = $registro_fic['activo_fic'];
+            $fecha_fic = $registro_fic['fecha_fic'];
 
            }
         } 
+
+
+        if ($activo_fic == 0 && $fecha_fic == date("Y-m-d")) {
+
+
+
+                echo "<p>No es posible realizar el fichaje. Tienes pendiente un fichaje por confirmar, revisa tu correo</p>
+                <button><a href='index.php'>Inicio</a></button>
+                <a href='reenviar.php?id=$id_usu'>Reenviar correo</a>";
+        } else{
 
         if ($tipo_ult == "E") {
             $tipo_fic = "S";
         } else {
             $tipo_fic = "E";
         }
+
+        
         
         ?>
 
@@ -51,7 +67,11 @@ if ($_POST) {
             </button>
         </form>
 
+
+
         <?php
+
+    }
     } else {
         echo "El DNI no existe";
     }

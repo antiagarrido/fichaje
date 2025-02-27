@@ -31,7 +31,7 @@ include 'conexion.php';
 $id = $_GET['id'];
 
 
-$sql = "SELECT * FROM fichajes f INNER JOIN usuarios u  ON f.id_usu = u.id_usu  WHERE id_usu = $id";
+$sql = "SELECT * FROM fichajes f INNER JOIN usuarios u  ON f.id_usu = u.id_usu  WHERE u.id_usu = $id";
 $resultado = $conexion->query($sql);
 
 foreach($resultado as $registro){
@@ -44,12 +44,6 @@ foreach($resultado as $registro){
     $activo = $registro['activo_fic'];
 
 ?>
-
-
-
-
-
-
 
     <tr>
         <td><?php echo $nombre?> </td>

@@ -2,8 +2,15 @@
 
 if($_GET){
 
-$id= $_GET['id'];
-$token = $_GET['t'];
+$id_publico= $_GET['id'];
+$token_publico = $_GET['t'];
+
+
+$llave= "Mi_clave";
+$metodo="AES-128-ECB";
+
+$id = openssl_decrypt(base64_decode($id_publico), $metodo, $llave);
+$token =   openssl_decrypt(base64_decode($token_publico), $metodo, $llave) ; 
 
 include("conexion.php");
 

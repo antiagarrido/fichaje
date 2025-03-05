@@ -4,6 +4,7 @@
 $id = $_GET['id'];
 
 include("conexion.php");
+include("funciones.php");
 
 
 $sql = "SELECT email_usu,id_fic, token_fic
@@ -31,12 +32,13 @@ foreach($resultado as $registro){
     $token = $registro['token_fic'];
 }   
 
+$id_publico = encriptar($id_fic);
 $cabecera = "Content-type: text/html; charset=utf-8";
 $para = $email;
 $asunto = "Confirma tu fichaje";
 $mensaje = "<h1> Confirmar fichaje</h1> <br>
 <p>Para confirmar tu fichaje haz click en el siguiente enlace :</p> <br>
-<a href='http://localhost/fichajes/activar.php?id=$id_fic&t=$token'>Activa tu fichaje</a>";
+<a href='http://localhost/fichajes/activar.php?id=$id_publico&t=$token'>Activa tu fichaje</a>";
 
 mail($para, $asunto, $mensaje, $cabecera);
 

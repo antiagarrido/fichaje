@@ -1,5 +1,7 @@
 <?php
 
+include("funciones.php");
+
 if($_GET){
 
 $id_publico= $_GET['id'];
@@ -9,8 +11,8 @@ $token_publico = $_GET['t'];
 $llave= "Mi_clave";
 $metodo="AES-128-ECB";
 
-$id = openssl_decrypt(base64_decode($id_publico), $metodo, $llave);
-$token =   openssl_decrypt(base64_decode($token_publico), $metodo, $llave) ; 
+$id =  desencriptar($id_publico);
+$token =   desencriptar($token_publico); 
 
 include("conexion.php");
 

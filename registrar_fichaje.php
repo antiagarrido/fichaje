@@ -1,5 +1,8 @@
 <?php
 
+//Aquí me fatla algo para manejar que no se duplique la entrada si recargo 
+
+
 $id_usu = $_POST['id_usu'];
 $tipo_fichaje = $_POST['tipo_fic'];
 

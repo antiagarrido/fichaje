@@ -8,14 +8,11 @@ include("conexion.php");
 
 $token =uniqid();
 
-
 //metodo de encriptación
 $llave= "Mi_clave";
 $metodo="AES-128-ECB";
 
-$token_publico =  base64_encode(openssl_encrypt($token, $metodo, $llave)) ;
-
-
+$token_publico =  base64_encode(openssl_encrypt($token, $metodo, $llave));
 
 
 $sql_fichaje = "INSERT INTO fichajes (id_usu, tipo_fic,activo_fic,token_fic ) values ('$id_usu', '$tipo_fichaje', '0', '$token')";
